@@ -10,11 +10,6 @@ async def get_key(key: str) -> str:
     return str(redis_service.redis_get(key))
 
 
-@router.get("/set_key")
+@router.get("set_key")
 async def set_key(key: str, value: str) -> bool:
     return redis_service.redis_set(key, value)
-
-
-@router.get("set_key_if_not_exist")
-async def set_key_if_not_exist(key: str, value: str) -> bool:
-    return redis_service.redis_set_if_not_exist(key, value)
