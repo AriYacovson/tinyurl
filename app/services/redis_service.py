@@ -1,7 +1,20 @@
 import redis
 import logging
+import os
 
-pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
+REDIS_HOST = os.environ.get("REDIS_HOST", "localhost")
+REDIS_PORT = os.environ.get("REDIS_PORT", 6379)
+REDIS_PASSWORD = os.environ.get("REDIS_PASSWORD", "")
+REDIS_DB = os.environ.get("REDIS_DB", 0)
+REDIS_MAX_CONNECTIONS = os.environ.get("REDIS_MAX_CONNECTION", 8)
+
+pool = redis.ConnectionPool(
+    host=REDIS_HOST,
+    port=REDIS_PORT,
+    db=REDIS_DB,
+    max_connections=REDIS_MAX_CONNECTIONS,
+    decode_responses=True,
+)
 redis = redis.Redis(connection_pool=pool)
 
 
