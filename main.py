@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 
-from services import redis_service
 app = FastAPI()
 
 
