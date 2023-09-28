@@ -6,10 +6,10 @@ from app.services.tiny_service import new_tiny, get_tiny
 
 
 
-router = APIRouter(tags=["tiny"], prefix="/tiny")
+router = APIRouter(tags=["tiny"])
 
 
-@router.post("/")
+@router.post("/tiny")
 async def create_new_tiny(new_tiny_request: NewTinyRequest):
     return new_tiny(new_tiny_request.url)
 
