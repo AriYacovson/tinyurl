@@ -5,7 +5,7 @@ import string
 
 from app.services.redis_service import redis_set, redis_get
 
-BASE_URL = os.environ.get("BASE_URL", "/")
+BASE_URL = os.environ.get("BASE_URL", "http://localhost:8000/tiny/")
 MAX_RETRIES = int(os.environ.get("MAX_RETRIES", 4))
 TINY_LETTERS = int(os.environ.get("TINY_LENGTH", 6))
 
