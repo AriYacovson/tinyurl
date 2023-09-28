@@ -1,10 +1,14 @@
+import os
+
 from dotenv import load_dotenv
 from fastapi import FastAPI
 
-load_dotenv()
+from app.routers import tiny_controller
 
-from app.routers import redis_controller
+load_dotenv(".env")
+# a = os.environ.get("BASE_URL")
+# print(a)
 
 app = FastAPI()
 
-app.include_router(router=redis_controller.router)
+app.include_router(tiny_controller.router)
