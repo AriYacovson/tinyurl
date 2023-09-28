@@ -3,7 +3,7 @@ import os
 import logging
 import string
 
-from app.services.redis_service import redis_set
+from app.services.redis_service import redis_set, redis_get
 
 BASE_URL = os.environ.get("BASE_URL", "/")
 MAX_RETRIES = int(os.environ.get("MAX_RETRIES", 4))
@@ -26,3 +26,7 @@ def new_tiny(long_url: str) -> str:
 
 def generate_tiny_url() -> str:
     return "".join(random.choice(string.ascii_letters) for _ in range(TINY_LETTERS))
+
+
+def get_tiny(tiny_url: str) -> str:
+    return redis_get(tiny_url)
